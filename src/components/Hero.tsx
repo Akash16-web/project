@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
       id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-  backgroundImage: "url('./public/images/pic.jpg')"
+  backgroundImage: "url('/images/pic.jpg')"
 }}
     >
       {/* Overlay */}
