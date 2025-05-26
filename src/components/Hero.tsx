@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from './ui/Button';
-import 
 
 const Hero: React.FC = () => {
   const scrollToSection = (id: string) => {
@@ -14,13 +13,17 @@ const Hero: React.FC = () => {
     <section 
       id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
-      <a href="https://ibb.co/whJLxFF9"><img src="https://i.ibb.co/chbv7SSG/pic.jpg" alt="pic" border="0" /></a>
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 md:px-8 max-w-3xl">
+        {/* Image */}
+        <a href="https://ibb.co/whJLxFF9" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.ibb.co/chbv7SSG/pic.jpg" alt="pic" border="0" className="mx-auto mb-6 rounded-lg shadow-lg" />
+        </a>
+        
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
           Experience the Finest Coffee <span className="text-[#D4AF37]">& Cuisine</span>
         </h1>
