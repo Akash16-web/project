@@ -14,9 +14,7 @@ const Hero: React.FC = () => {
     <section 
       id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
-        <img
-          src = "https://ibb.co/whJLxFF9"
-          />
+      <a href="https://ibb.co/whJLxFF9"><img src="https://i.ibb.co/chbv7SSG/pic.jpg" alt="pic" border="0" /></a>
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
