@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './ui/Button';
+import 
 
 const Hero: React.FC = () => {
   const scrollToSection = (id: string) => {
@@ -14,7 +15,7 @@ const Hero: React.FC = () => {
       id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-  backgroundImage: "url('/images/pic.jpg')"
+  backgroundImage: "url('./images/pic.jpg')"
 }}
     >
       {/* Overlay */}
