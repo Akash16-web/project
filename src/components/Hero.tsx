@@ -12,13 +12,11 @@ const Hero: React.FC = () => {
     <section 
       id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
-      <div>
-        <img
 
-        src="https://d4t7t8y8xqo0t.cloudfront.net/app//resized/818X450/restaurant/683782/restaurant020220611045541.jpg"
-    
-        />
-      </div>
+       style={{ 
+        backgroundImage: "url('/public/images/pic.jpg')"
+      }}
+      
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
