@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
 
        style={{ 
-        backgroundImage: "url('/images/pic.jpg')"
+        backgroundImage: "url('./dist/images/pic.jpg')"
       }}
       
     >
