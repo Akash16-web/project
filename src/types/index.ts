@@ -4,7 +4,7 @@ export interface MenuItem {
   description: string;
   price: string;
   image: string;
-  category: 'breakfast' | 'lunch' | 'dinner' | 'desserts' | 'drinks';
+  category: 'breakfast' | 'lunch' | 'dinner' | 'desserts' | 'Coffee';
   popular?: boolean;
 }
 
