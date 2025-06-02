@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 import { X } from 'lucide-react';
 import { galleryImages } from '../data/gallery';
 import SectionTitle from './ui/SectionTitle';
 
 const GallerySection: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: 'free-snap',
+    slides: {
+      perView: 1,
+      spacing: 15,
+    },
+    breakpoints: {
+      '(min-width: 640px)': {
+        slides: { perView: 2, spacing: 15 },
+      },
+      '(min-width: 1024px)': {
+        slides: { perView: 3, spacing: 20 },
+      },
+    },
+  });
 
   const openLightbox = (id: number) => {
     setSelectedImage(id);
@@ -16,51 +35,49 @@ const GallerySection: React.FC = () => {
     document.body.style.overflow = 'auto';
   };
 
-  const currentImage = selectedImage !== null 
-    ? galleryImages.find(img => img.id === selectedImage) 
+  const currentImage = selectedImage !== null
+    ? galleryImages.find((img) => img.id === selectedImage)
     : null;
 
   return (
-    <section id="gallery" className="py-20 bg-[#F5F0E8]">
+    <section id="gallery" className="py-20 bg-[#F4C2C2]">
       <div className="container mx-auto px-4 md:px-6">
-        <SectionTitle 
-          title="Gallery" 
+        <SectionTitle
+          title="Gallery"
           subtitle="Take a visual journey through our cafe's ambiance and culinary creations"
         />
 
-        {/* YouTube Video Embed */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-full max-w-[640px] h-[400px]">
-            <iframe
-              className="w-full h-full rounded-lg"
-              src="https://www.youtube.com/embed/Xv3KDPhpCtA?si=K6QMV0dgbP8MZC3g"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+        {/* Carousel with Video as First Slide */}
+        <div ref={sliderRef} className="keen-slider overflow-hidden">
+
+          {/* YouTube Video Slide */}
+          <div className="keen-slider__slide">
+            <div className="relative w-full h-[257px] aspect-video rounded-lg overflow-hidden">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/Xv3KDPhpCtA?si=K6QMV0dgbP8MZC3g"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
-        </div>
 
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Image Slides */}
           {galleryImages.map((image) => (
-            <div 
-              key={image.id} 
-              className="group relative overflow-hidden rounded-lg cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-lg"
+            <div
+              key={image.id}
+              className="keen-slider__slide rounded-lg overflow-hidden cursor-pointer"
               onClick={() => openLightbox(image.id)}
             >
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-white font-medium">View</span>
-              </div>
             </div>
           ))}
         </div>
@@ -68,7 +85,7 @@ const GallerySection: React.FC = () => {
         {/* Lightbox */}
         {selectedImage !== null && currentImage && (
           <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
-            <button 
+            <button
               className="absolute top-4 right-4 text-white p-2 rounded-full bg-black/50 hover:bg-black/70"
               onClick={closeLightbox}
               aria-label="Close lightbox"
@@ -76,9 +93,9 @@ const GallerySection: React.FC = () => {
               <X size={24} />
             </button>
             <div className="max-w-4xl max-h-[80vh]">
-              <img 
-                src={currentImage.src} 
-                alt={currentImage.alt} 
+              <img
+                src={currentImage.src}
+                alt={currentImage.alt}
                 className="max-w-full max-h-[80vh] object-contain"
               />
             </div>
