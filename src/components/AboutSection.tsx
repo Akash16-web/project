@@ -26,16 +26,11 @@ const AboutSection: React.FC = () => {
               title="Our Story" 
               centered={false}
             />
-            <div className="space-y-4 text-gray-700">
-              <p>
-                Founded in 2010, La Vie En Rose began as a small pâtisserie in the local farmers' market. Our founder, Marie Laurent, had a vision to create a space where authentic French café culture could flourish.
-              </p>
-              <p>
-                As our reputation for exquisite pastries and elegant atmosphere grew, we expanded to our current location in the heart of downtown. Today, we're proud to be a beloved destination for those seeking a taste of Paris.
-              </p>
-              <p>
-                At La Vie En Rose, we believe in preserving traditional French baking techniques while embracing modern innovations. Every pastry we create and every cup we serve is crafted with passion and authenticity.
-              </p>
+            <div className="space-y-4 text-gray-700 ">
+            <p className="text-md">
+              Since 2010, La Vie En Rose has brought Parisian café charm to the city with handcrafted pastries and timeless French flavors—blending tradition, elegance, and passion in every bite.
+            </p>
+
               
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-light rounded-lg">
