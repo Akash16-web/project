@@ -7,69 +7,67 @@ const ReservationSection: React.FC = () => {
   const [time, setTime] = useState<string>('');
   const [guests, setGuests] = useState<string>('2');
   const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [specialRequests, setSpecialRequests] = useState<string>('');
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would handle the form submission
     alert('Reservation submitted! We will contact you shortly to confirm.');
   };
-  
-  // Get tomorrow's date for the min date attribute
-const today = new Date();
-const tomorrow = new Date(today);
-tomorrow.setDate(today.getDate() + 1);
 
-const oneWeekFromNow = new Date(today);
-oneWeekFromNow.setDate(today.getDate() + 7);
+  // Generate date range (tomorrow to one week from today)
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
 
-const tomorrowStr = tomorrow.toISOString().split('T')[0];
-const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
+  const oneWeekFromNow = new Date(today);
+  oneWeekFromNow.setDate(today.getDate() + 7);
 
-  
+  const tomorrowStr = tomorrow.toISOString().split('T')[0];
+  const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
+
   return (
     <section id="reservation" className="py-20 bg-cover bg-center relative">
       <div className="absolute inset-0 bg-black opacity-70"></div>
-      <div 
-        className="absolute inset-0 opacity-20 bg-fixed" 
-        style={{ 
-          backgroundImage: "url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+      <div
+        className="absolute inset-0 opacity-20 bg-fixed"
+        style={{
+          backgroundImage:
+            "url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
         }}
       ></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <SectionTitle 
-          title="Reserve a Table" 
+        <SectionTitle
+          title="Reserve a Table"
           subtitle="Make your dining experience seamless by booking in advance"
           className="text-white"
         />
-        
+
         <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-lg shadow-lg">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Date */}
             <div>
               <label htmlFor="date" className="block text-white text-sm font-medium mb-2">Date</label>
-              <input 
-              type="date" 
-              id="date" 
-              className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70"
-              min={tomorrowStr}
-              max={oneWeekStr}
-              required
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-
-
+              <input
+                type="date"
+                id="date"
+                className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70"
+                min={tomorrowStr}
+                max={oneWeekStr}
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
             </div>
-            
+
+            {/* Time */}
             <div>
               <label htmlFor="time" className="block text-white text-sm font-medium mb-2">Time</label>
-              <select 
-                id="time" 
+              <select
+                id="time"
                 className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white"
                 required
                 value={time}
@@ -89,11 +87,12 @@ const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
                 <option value="20:00">8:00 PM</option>
               </select>
             </div>
-            
+
+            {/* Guests */}
             <div>
               <label htmlFor="guests" className="block text-white text-sm font-medium mb-2">Guests</label>
-              <select 
-                id="guests" 
+              <select
+                id="guests"
                 className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white"
                 required
                 value={guests}
@@ -110,12 +109,13 @@ const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
                 <option value="large">More than 8 people</option>
               </select>
             </div>
-            
+
+            {/* Name */}
             <div>
               <label htmlFor="name" className="block text-white text-sm font-medium mb-2">Name</label>
-              <input 
-                type="text" 
-                id="name" 
+              <input
+                type="text"
+                id="name"
                 className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70"
                 placeholder="Your full name"
                 required
@@ -123,25 +123,13 @@ const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70"
-                placeholder="your.email@example.com"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            
+
+            {/* Phone */}
             <div>
               <label htmlFor="phone" className="block text-white text-sm font-medium mb-2">Phone</label>
-              <input 
-                type="tel" 
-                id="phone" 
+              <input
+                type="tel"
+                id="phone"
                 className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70"
                 placeholder="(123) 456-7890"
                 required
@@ -149,23 +137,25 @@ const oneWeekStr = oneWeekFromNow.toISOString().split('T')[0];
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
-            
+
+            {/* Special Requests */}
             <div className="md:col-span-2">
               <label htmlFor="special-requests" className="block text-white text-sm font-medium mb-2">Special Requests</label>
-              <textarea 
-                id="special-requests" 
-                rows={4} 
+              <textarea
+                id="special-requests"
+                rows={4}
                 className="w-full px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder-white/70 resize-none"
                 placeholder="Any special requests or dietary restrictions?"
                 value={specialRequests}
                 onChange={(e) => setSpecialRequests(e.target.value)}
               ></textarea>
             </div>
-            
+
+            {/* Submit */}
             <div className="md:col-span-2">
-              <Button 
-                variant="secondary" 
-                size="lg" 
+              <Button
+                variant="secondary"
+                size="lg"
                 className="w-full"
                 type="submit"
               >
