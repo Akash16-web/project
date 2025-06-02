@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }; 
 
   return (
     <section 
