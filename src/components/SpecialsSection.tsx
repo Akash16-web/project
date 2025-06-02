@@ -9,7 +9,7 @@ const SpecialsSection: React.FC = () => {
       id: 1,
       title: 'Breakfast Deal',
       description: 'Enjoy any breakfast item with a coffee of your choice',
-      price: '199/-',
+      price: '',
       time: 'Daily, 7:00 AM - 11:00 AM',
       image: 'https://images.pexels.com/photos/357573/pexels-photo-357573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
     },
@@ -17,7 +17,7 @@ const SpecialsSection: React.FC = () => {
       id: 2,
       title: 'Lunch Special',
       description: 'Any sandwich with a side salad and drink',
-      price: '299/-',
+      price: '',
       time: 'Weekdays, 11:00 AM - 2:00 PM',
       image: 'https://images.pexels.com/photos/1647163/pexels-photo-1647163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
     },
@@ -25,7 +25,7 @@ const SpecialsSection: React.FC = () => {
       id: 3,
       title: 'Weekend Brunch',
       description: 'Bottomless mimosas with any brunch entrée',
-      price: '149/-',
+      price: '',
       time: 'Weekends, 10:00 AM - 2:00 PM',
       image: 'https://images.pexels.com/photos/209449/pexels-photo-209449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
     }
@@ -39,7 +39,7 @@ const SpecialsSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-[#F5F0E8]" >
+    <section className="py-20 bg-[#F4C2C2]" >
       <div className="container mx-auto px-4 md:px-6">
         <SectionTitle 
           title="Special Offers" 
