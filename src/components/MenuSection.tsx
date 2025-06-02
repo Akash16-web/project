@@ -4,12 +4,12 @@ import { menuItems } from '../data/menuItems';
 import SectionTitle from './ui/SectionTitle';
 
 const MenuSection: React.FC = () => {
-  const categories = ['all', 'breakfast', 'lunch', 'dinner', 'desserts', 'drinks'];
+  const categories = ['all', 'breakfast', 'lunch', 'desserts', 'coffee'];
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const filteredItems = activeCategory === 'all' 
     ? menuItems 
-    : menuItems.filter(item => item.category === activeCategory);
+    : menuItems.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
     <section id="menu" className="py-20 bg-[#F4C2C2]">
@@ -38,9 +38,15 @@ const MenuSection: React.FC = () => {
         
         {/* Menu items grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item) => (
-            <MenuCard key={item.id} item={item} />
-          ))}
+          {filteredItems.length > 0 ? (
+            filteredItems.map((item) => (
+              <MenuCard key={item.id} item={item} />
+            ))
+          ) : (
+            <p className="text-center text-gray-700 text-lg col-span-full">
+              No items available in this category.
+            </p>
+          )}
         </div>
       </div>
     </section>
