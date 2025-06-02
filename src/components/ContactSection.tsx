@@ -6,7 +6,7 @@ import Button from './ui/Button';
 
 const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="py-20 bg-light">
+    <section id="contact" className="py-20 bg-light" style={{ backgroundColor: '#F4C2C2' }}>
       <div className="container mx-auto px-4 md:px-6">
         <SectionTitle 
           title="Contact Us" 
@@ -90,15 +90,7 @@ const ContactSection: React.FC = () => {
                   </div>
                 </div>
                 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                  <input 
-                    type="text" 
-                    id="subject" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                    placeholder="Message subject"
-                  />
-                </div>
+                
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
